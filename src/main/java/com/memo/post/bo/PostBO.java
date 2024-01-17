@@ -33,6 +33,6 @@ public class PostBO {
 		if(file != null) {
 			 imagePath = fileManagerService.saveFile(userLoginId, file);
 		}
-		// postMapper.insertPost(userId, subject, content, null);
+		 postMapper.insertPost(userId, subject, content, null);
 	}
 }

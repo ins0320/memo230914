@@ -45,7 +45,6 @@
 			
 
 			
-			// alert(fileName);
 				
 			// validation
 			if(!subject){
@@ -71,8 +70,7 @@
 					return;
 				}
 			}
-			
-		});
+			alert(fileName);
 		
 		// form 태그를 js에서 만든다.
 		// 이미지를 업로드 할 때는 반드시 form 태그가 있어야 한다.
@@ -81,29 +79,29 @@
 		formData.append("content", content);
 		formData.append("file", $("#file")[0].files[0]);
 		
-		alert(subject);
 		
-		// AJAX
-		$.ajax({
-			// request
-			type:"POST"
-			, url: "/post/create"
-			, data: formData
-			, enctype: 'multipart/form-data' // 파일 업로드를 위한 필수 설정
-			, processData: false // 파일 업로드를 위한 필수 설정
-			, contentType: false // 파일 업로드를 위한 필수 설정
-			
-			// response
-			, success:function(data){
-				if(data.code == 200){
-					
-				} else {
-					alert(data.error_message);
+			// AJAX
+			$.ajax({
+				// request
+				type:"POST"
+				, url: "/post/create"
+				, data: formData
+				, enctype: 'multipart/form-data' // 파일 업로드를 위한 필수 설정
+				, processData: false // 파일 업로드를 위한 필수 설정
+				, contentType: false // 파일 업로드를 위한 필수 설정
+				
+				// response
+				, success:function(data){
+					if(data.code == 200){
+						
+					} else {
+						alert(data.error_message);
+					}
 				}
-			}
-			, error:function(request, status, error){
-				alert("글을 저장하는데 실패했습니다.");
-			}
-		})
+				, error:function(request, status, error){
+					alert("글을 저장하는데 실패했습니다.");
+				}
+			})
+		});	
 	});
 </script>
