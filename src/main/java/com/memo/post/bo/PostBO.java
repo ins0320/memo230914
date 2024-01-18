@@ -10,6 +10,7 @@ import com.memo.common.FileManagerService;
 import com.memo.post.domain.Post;
 import com.memo.post.mapper.PostMapper;
 
+
 @Service
 public class PostBO {
 
@@ -36,6 +37,16 @@ public class PostBO {
 		}
 		
 		postMapper.insertPost(userId, subject, content, imagePath);
+	}
+
+
+
+
+
+	
+	// DB 조회 - 글번호, userId
+	public Post getPostListByPostIdAndUserId(int postId, int userId){
+		return postMapper.selectPostListByPostIdAndUserId(postId, userId);
 	}
 }
 
