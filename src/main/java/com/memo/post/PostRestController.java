@@ -23,23 +23,24 @@ public class PostRestController {
 	
 	@PostMapping("/create")
 	public Map<String, Object> create(
-			@RequestParam("subject") String subject
-			, @RequestParam("content") String content
-			, @RequestParam(value = "file",  required = false) MultipartFile file
-			, HttpSession session){
+			@RequestParam("subject") String subject,
+			@RequestParam("content") String content,
+			@RequestParam(value = "file", required = false) MultipartFile file,
+			HttpSession session) {
 		
 		// 글쓴이 번호 - session에 있는 userId를 꺼낸다.
 		int userId = (int)session.getAttribute("userId");
 		String userLoginId = (String)session.getAttribute("userLoginId");
 		
 		// DB Insert
-		postBO.addPost(userId,userLoginId, subject, content, file);
+		postBO.addPost(userId, userLoginId, subject, content, file);
 		
 		// 응답값
 		Map<String, Object> result = new HashMap<>();
 		result.put("code", 200);
 		result.put("result", "성공");
 		return result;
-		
 	}
 }
+
+

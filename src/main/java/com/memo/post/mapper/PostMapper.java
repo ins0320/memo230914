@@ -10,9 +10,8 @@ import com.memo.post.domain.Post;
 
 @Mapper
 public interface PostMapper {
-
 	
-	// input: X  output: List<Map>
+	// input:X   output:List<Map>
 	public List<Map<String, Object>> selectPostList();
 	
 	public List<Post> selectPostListByUserId(int userId);
@@ -22,6 +21,6 @@ public interface PostMapper {
 			@Param("subject") String subject, 
 			@Param("content") String content, 
 			@Param("imagePath") String imagePath);
-	
-	
 }
+
+
