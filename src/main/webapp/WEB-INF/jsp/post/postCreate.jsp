@@ -41,7 +41,7 @@
 			//alert("글 저장");
 			let subject = $("#subject").val().trim();
 			let content = $("#content").val();
-			let fileName = $("#file").val(); // C:\fakepath\winter-8425500_640.jpg
+			let fileName = $("#file").val(); // C:\fakepath\cherries.jpg
 			//alert(fileName);
 			
 			// validation
@@ -58,7 +58,7 @@
 			// 파일이 업로드 된 경우에만 확장자 체크
 			if (fileName) {
 				//alert("파일이 있다.");
-				// C:\fakepath\winter-8425500_640.jpg
+				// C:\fakepath\cherries.jpg
 				// 확장자만 뽑은 후 소문자로 변경해서 검사한다.
 				let extension = fileName.split(".").pop().toLowerCase();
 				//alert(extension);
@@ -77,7 +77,7 @@
 			formData.append("content", content);
 			formData.append("file", $("#file")[0].files[0]);
 			
-			alert(fileName);
+			// alert(fileName);
 			// AJAX
 			$.ajax({
 				// request
