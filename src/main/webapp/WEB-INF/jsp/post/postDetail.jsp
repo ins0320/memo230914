@@ -110,9 +110,9 @@
 			
 			$.ajax({
 				type:"DELETE"
-				, url: "/post/delete"
-				, data: {"postId", postId}
-				,success: function(data){
+				, url:"/post/delete"
+				, data:{"postId": postId}
+				,success:function(data){
 					if(data.code == 200){
 						alert("메모가 삭제되었습니다.");
 						locarion.href="/post/post-list-view";

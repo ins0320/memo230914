@@ -89,7 +89,13 @@ public class PostBO {
 		
 		// db 업데이트
 		postMapper.updatePostByPostId(postId, subject, content, imagePath);
+	
+	
 	}
+	// input: postId  output: X 
+			public void deletePostByPostId(int postId) {
+				postMapper.deletepostByPostId(postId);
+			}
 }
 
 

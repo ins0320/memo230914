@@ -77,6 +77,14 @@ public class PostRestController {
 	public Map<String, Object> delete(
 			@RequestParam("postId") int postId){
 		
+		// db delete
+		postBO.deletePostByPostId(postId);
+		
+		// 응답값
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 200);
+		result.put("result", "성공");
+		return result;
 	}
 }
 
