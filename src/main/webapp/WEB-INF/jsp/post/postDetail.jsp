@@ -103,25 +103,23 @@
 		});
 		
 		// 글 삭제 버튼
-		$("#deleteBtn").on('click', function(){
-			// alert("삭제버튼");
+		$("#deleteBtn").on('click', function() {
 			let postId = $(this).data("post-id");
-			// alert(postId);
+			//alert(postId);
 			
 			$.ajax({
 				type:"DELETE"
 				, url:"/post/delete"
-				, data:{"postId": postId}
-				,success:function(data){
-					if(data.code == 200){
-						alert("메모가 삭제되었습니다.");
-						locarion.href="/post/post-list-view";
-					} else{
+				, data:{"postId":postId}
+				, success:function(data) {
+					if (data.code == 200) {
+						location.href = "/post/post-list-view";
+					} else {
 						alert(data.error_message);
 					}
 				}
-				,error:function(request, status, error){
-					alert("글을 삭제하는데 실패했습니다.");
+				, error:function(request, status, error) {
+					alert("글 삭제 하는데 실패했습니다.");
 				}
 			});
 		});

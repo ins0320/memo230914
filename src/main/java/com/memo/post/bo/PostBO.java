@@ -54,7 +54,7 @@ public class PostBO {
 	
 	// DB 조회 - 글번호, userId
 	public Post getPostListByPostIdAndUserId(int postId, int userId){
-		return postMapper.selectPostListByPostIdAndUserId(postId, userId);
+		return postMapper.selectPostByPostIdUserId(postId, userId);
 	}
 	
 	// input: 파라미터들 output:x
@@ -64,7 +64,7 @@ public class PostBO {
 			MultipartFile file) {
 		
 		// 기존글을 가져온다(1.이미지 교체시 삭제하기 위해  2. 업데이트 대상이 있는지 확인)
-		Post post = postMapper.selectPostListByPostIdAndUserId(postId, userId);
+		Post post = postMapper.selectPostByPostIdUserId(postId, userId);
 		
 		// post NPE 방지
 		if(post == null) {
@@ -92,10 +92,23 @@ public class PostBO {
 	
 	
 	}
-	// input: postId  output: X 
-			public void deletePostByPostId(int postId) {
-				postMapper.deletepostByPostId(postId);
+	// input:postId, userId     output: X
+		public void deletePostByPostIdUserId(int postId, int userId) {
+			// 기존글이 있는지 확인
+			Post post = postMapper.selectPostByPostIdUserId(postId, userId);
+			if (post == null) {
+				log.info("[글 삭제] post is null. postId:{}, userId:{}", postId, userId);
+				return;
 			}
+			
+			// DB 삭제
+			int deleteRowCount = postMapper.deletePostByPostId(postId);
+			
+			// 이미지가 존재하면 삭제 && DB 삭제도 성공
+			if (deleteRowCount > 0 && post.getImagePath() != null) {
+				fileManagerService.deleteFile(post.getImagePath());
+			}
+		}
 }
 
 

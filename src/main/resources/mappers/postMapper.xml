@@ -47,7 +47,8 @@
 		)
 	</insert>
 	
-	<select id="selectPostListByPostIdAndUserId" parameterType="map" resultType="com.memo.post.domain.Post">
+	
+	<select id="selectPostByPostIdUserId" parameterType="map" resultType="com.memo.post.domain.Post">
 		SELECT
 			`id`
 			,`userId`
@@ -60,9 +61,9 @@
 			`post`
 		WHERE
 			`userId` = #{userId}
-			And `id` = #{postId}
-	
+			AND `id` = #{postId}
 	</select>
+	
 	
 	<update id="updatePostByPostId" parameterType="map">
 		UPDATE 	`post`
@@ -77,9 +78,9 @@
 			`id` = #{postId}	
 	
 	</update>
-	
-	<delete id="deletepostByPostId" parameterType="int">
-		DELETE FROM
+	<delete id="deletePostByPostId" parameterType="int">
+		DELETE
+		FROM
 			`post`
 		WHERE
 			`id` = #{postId}
