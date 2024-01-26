@@ -18,8 +18,8 @@ public class FileManagerService {
 
 	// 실제 업로드 된 이미지가 저장될 경로(서버)
 	// public static final String FILE_UPLOAD_PATH = "C:\\Users\\44779\\김유정\\spring_project\\memo\\memo_workspace\\images/";
-	// public static final String FILE_UPLOAD_PATH = "D:\\김유정\\6_springProject\\memo\\workspace\\images/";
-	 public static final String FILE_UPLOAD_PATH = "C:\\Users\\yoojung0318\\megastudy\\spring_project\\MEMO\\memo_workspace\\images/";
+	 public static final String FILE_UPLOAD_PATH = "D:\\김유정\\6_springProject\\memo\\workspace\\images/";
+	// public static final String FILE_UPLOAD_PATH = "C:\\Users\\yoojung0318\\megastudy\\spring_project\\MEMO\\memo_workspace\\images/";
 	
 	// input:File 원본, userLoginId(폴더명)  output: 이미지 경로
 	public String saveFile(String loginId, MultipartFile file) {
